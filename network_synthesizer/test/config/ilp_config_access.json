@@ -1,0 +1,8 @@
+{
+    "demand_file": "data/satellite_network_access_demand.npy",
+    "matrix_path": "data/constraint_matrices_access/",
+    "num_processes": 100,
+    "texture_save_path": "data/candidate_texture_library_access/",
+    "satellite_height": 573,
+    "results_save_path": "data/eval1_573_access_lp.npy"
+}

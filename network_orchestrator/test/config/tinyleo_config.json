@@ -1,0 +1,21 @@
+{
+    "Name": "tinyleo",
+    "Satellite link": "Arbitrary",
+    "Duration (s)":5,
+    "satellite link bandwidth (\"X\" Gbps)": 200,
+    "sat-ground bandwidth (\"X\" Gbps)": 96,
+    "satellite link loss (\"X\"% )": 0,
+    "sat-ground loss (\"X\"% )": 0,
+    "antenna number": 1,
+    "antenna elevation angle": 25,
+    "Link policy": "LeastDelay",
+    "topo_dir": "data/topo_data/",
+    "Machines": [
+        {
+            "IP": "101.6.21.153",
+            "port": 22,
+            "username": "root",
+            "password": "xxx"
+        }
+    ]
+}

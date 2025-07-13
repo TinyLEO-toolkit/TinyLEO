@@ -1,0 +1,9 @@
+{
+    "demand_file": "data/satellite_network_access_demand.npy",
+    "results_save_path": "data/eval1_573_access.npy",
+    "memory_threshold": 32,
+    "num_processes": 100,
+    "texture_save_path": "data/candidate_texture_library_access/",
+    "satellite_height": 573,
+    "epsilon": 1e-06
+}

@@ -1,0 +1,8 @@
+{
+    "demand_file": "data/satellite_network_backbone_demand.npy",
+    "matrix_path": "data/constraint_matrices_backbone/",
+    "num_processes": 100,
+    "texture_save_path": "data/candidate_texture_library_backbone/",
+    "satellite_height": 573,
+    "results_save_path": "data/eval1_573_backbone_lp.npy"
+}

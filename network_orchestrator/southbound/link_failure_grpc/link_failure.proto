@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+service LinkFailureService {
+  rpc HandleLinkFailure (LinkFailureRequest) returns (LinkFailureResponse);
+}
+
+message LinkFailureRequest {
+  repeated string satellite_ids = 1; // Two satellite ids in failure link
+}
+
+message LinkFailureResponse {
+  bool success = 1; 
+  string message = 2;
+}

@@ -1,0 +1,103 @@
+{
+  "version": "1.0",
+  "description": "TinyLEO Geographic Traffic Engineering Configuration",
+  "grid_config": {
+    "rows": 11,
+    "cols": 11
+  },
+  "global_settings": {
+    "isl_capacity_gbps": 200.0
+  },
+  "traffic_demands": [
+    {
+      "source": 30,
+      "destination": 27,
+      "demand_gbps": 32776,
+      "routing_policy": "shortest_path"
+    },
+    {
+      "source": 30,
+      "destination": 39,
+      "demand_gbps": 4136,
+      "routing_policy": "shortest_path"
+    },
+    {
+      "source": 30,
+      "destination": 61,
+      "demand_gbps": 162,
+      "routing_policy": "shortest_path"
+    },
+    {
+      "source": 30,
+      "destination": 24,
+      "demand_gbps": 41888,
+      "routing_policy": "shortest_path"
+    },
+    {
+      "source": 30,
+      "destination": 87,
+      "demand_gbps": 2516,
+      "routing_policy": "shortest_path"
+    },
+    {
+      "source": 39,
+      "destination": 27,
+      "demand_gbps": 47793,
+      "routing_policy": "shortest_path"
+    },
+    {
+      "source": 39,
+      "destination": 61,
+      "demand_gbps": 524,
+      "routing_policy": "shortest_path"
+    },
+    {
+      "source": 27,
+      "destination": 61,
+      "demand_gbps": 21316,
+      "routing_policy": "shortest_path"
+    },
+    {
+      "source": 27,
+      "destination": 69,
+      "demand_gbps": 126,
+      "routing_policy": "shortest_path"
+    },
+    {
+      "source": 27,
+      "destination": 24,
+      "demand_gbps": 28340,
+      "routing_policy": "shortest_path"
+    },
+    {
+      "source": 27,
+      "destination": 87,
+      "demand_gbps": 20,
+      "routing_policy": "shortest_path"
+    },
+    {
+      "source": 61,
+      "destination": 69,
+      "demand_gbps": 150,
+      "routing_policy": "shortest_path"
+    },
+    {
+      "source": 61,
+      "destination": 24,
+      "demand_gbps": 33,
+      "routing_policy": "shortest_path"
+    },
+    {
+      "source": 69,
+      "destination": 24,
+      "demand_gbps": 71701,
+      "routing_policy": "shortest_path"
+    },
+    {
+      "source": 24,
+      "destination": 87,
+      "demand_gbps": 5349,
+      "routing_policy": "shortest_path"
+    }
+  ]
+}
