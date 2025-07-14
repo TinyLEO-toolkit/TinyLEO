@@ -1,7 +1,6 @@
 # TinyLEO: Small-scale LEO Satellite Networking for Global-scale Demands
 
-
-TinyLEO is an open-source community toolkit to create small-scale Low Earth Orbit (LEO) satellite network for global-scale network demands via via dynamic *spatiotemporal supply-demand matching*. It can sparsify satellite network supplies on demand via compressed sensing, hide complexities of their heterogeneous physical dynamics in its stable model predictive control plane, and move the responsibility for handling them to its data-plane geographic segment anycast for higher network usability, lower resource wastes, faster failovers, simpler satellites, and more flexible network orchestration.
+TinyLEO is an open-source community toolkit to enable small-scale Low Earth Orbit (LEO) satellite network for global-scale network demands via dynamic spatiotemporal supply-demand matching. It can sparsify satellite network supplies on demand via compressed sensing, hide complexities of their heterogeneous physical dynamics in its stable model predictive control plane, and move the responsibility for handling them to its data-plane geographic segment anycast for higher network usability, lower resource wastes, faster failovers, simpler satellites, and more flexible network orchestration.
 
 <div align=center>
 <img src="docs/toolkit.png" width="800px"/>
