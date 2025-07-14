@@ -1,7 +1,10 @@
 # Offline LEO Network Synthesizer
 
+<div style="text-align: justify">
 TinyLEO's `network_synthesizer` implements
 TinyLEO’s demand-driven LEO network sparsification in [1]. It consists of the generation of candidate orbital coverage textures, and two methods of sparse spatiotemporal supply-demand matching for network synthesis: TinyLEO's matching pursuit and baseline integer linear programming optimizations (powered by Gurobi).
+</div>
+<p></p>
 
 
 <div align=center>
