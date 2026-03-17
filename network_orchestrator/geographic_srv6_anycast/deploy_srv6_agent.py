@@ -17,8 +17,20 @@ across multiple containers in a network simulation or production environment.
 import subprocess
 from tqdm import tqdm
 
-dir = '/root/tinyleo-Arbitrary-LeastDelay'
+import sys
+import os
+
+# Allow overriding dir via command line argument, fallback to current dir or hardcoded path
+if len(sys.argv) > 1:
+    dir = sys.argv[1]
+else:
+    dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 pid_path = f"{dir}/container_pid.txt"
+if not os.path.exists(pid_path):
+    print(f"Error: PID file not found at {pid_path}")
+    sys.exit(1)
+
 pid_maps = {}
 with open(pid_path, 'r') as f:
     for line in f:

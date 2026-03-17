@@ -749,7 +749,7 @@ class RemoteMachine:
         """
         sn_remote_wait_output(
             self.ssh,
-            f"python3 {self.dir}/controller/geographic_srv6_anycast/deploy_srv6_agent.py"
+            f"python3 {self.dir}/controller/geographic_srv6_anycast/deploy_srv6_agent.py {self.dir}"
         )
 
     def ping_async(self, res_path, src, dst):

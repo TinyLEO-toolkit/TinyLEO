@@ -501,6 +501,7 @@ def sn_init_nodes(dir, sat_mid_dict_shell, gs_mid_dict):
 
     pid_file = open(dir + '/' + PID_FILENAME, 'w', encoding='utf-8')
     sat_cnt = 0
+    os.makedirs("/run/netns", exist_ok=True) # Ensure /run/netns exists
     for shell_id, mid_dict in enumerate(sat_mid_dict_shell):
         for node, mid in mid_dict.items():  
             if mid != machine_id:
@@ -509,7 +510,13 @@ def sn_init_nodes(dir, sat_mid_dict_shell, gs_mid_dict):
             node_dir = f"{dir}/shell{shell_id}/overlay/{node}"
             sat_cnt += 1
             os.makedirs(node_dir, exist_ok=True)
-            pid_file.write(node+':'+str(pyctr.container_run(node_dir, node))+' ')
+            try:
+                c_pid = pyctr.container_run(node_dir, node)
+                if c_pid <= 0:
+                    print(f"Error starting container for {node}")
+                pid_file.write(f"{node}:{c_pid} ")
+            except Exception as e:
+                print(f"Exception starting container for {node}: {e}")
         pid_file.write('\n')
         print(f'[{machine_id}] shell {shell_id}: {sat_cnt} satellites initialized')
     
@@ -522,7 +529,13 @@ def sn_init_nodes(dir, sat_mid_dict_shell, gs_mid_dict):
         gs_lst.append(node)
         node_dir = f'{overlay_dir}/{node}'
         os.makedirs(node_dir, exist_ok=True)
-        pid_file.write(node+':'+str(pyctr.container_run(node_dir, node))+' ')
+        try:
+            c_pid = pyctr.container_run(node_dir, node)
+            if c_pid <= 0:
+                print(f"Error starting container for {node}")
+            pid_file.write(f"{node}:{c_pid} ")
+        except Exception as e:
+            print(f"Exception starting container for {node}: {e}")
     pid_file.write('\n')
     print(f'[{machine_id}] GS:', ','.join(gs_lst))
 

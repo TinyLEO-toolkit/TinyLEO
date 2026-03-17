@@ -84,7 +84,25 @@ static int container_init(
     }
 
     char controller_src[PATH_MAX+add_len];
-    snprintf(controller_src, sizeof(controller_src), "/root/tinyleo-Arbitrary-LeastDelay/controller");
+    // Find the base directory (e.g. /home/user/tinyleo-Arbitrary-LeastDelay/shellX/overlay/SATY)
+    // We assume the experiment_name is "tinyleo-Arbitrary-LeastDelay" and controller is adjacent
+    // Let's pass it via argument or infer it from base_dir by looking for "shell" or "GS"
+    // Since we can't easily change the C interface without updating Python everywhere, we'll
+    // infer it by finding the path up to the experiment directory.
+    const char *exp_marker1 = "/shell";
+    const char *exp_marker2 = "/GS-";
+    char exp_dir[PATH_MAX] = {0};
+    strncpy(exp_dir, base_dir, PATH_MAX - 1);
+    char *ptr = strstr(exp_dir, exp_marker1);
+    if (!ptr) ptr = strstr(exp_dir, exp_marker2);
+    if (ptr) {
+        *ptr = '\0';
+    } else {
+        // Fallback
+        strncpy(exp_dir, "/root/tinyleo-Arbitrary-LeastDelay", PATH_MAX - 1);
+    }
+
+    snprintf(controller_src, sizeof(controller_src), "%s/controller", exp_dir);
     if(mount(controller_src, controller_dst, NULL, MS_BIND|MS_REC, NULL) != 0) {
         return child_err("mount --bind controller failed: ", err_fd);
     }

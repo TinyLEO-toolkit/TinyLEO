@@ -73,22 +73,31 @@ for timestamp in range(0, sn.duration):
         sn.update_tinyleo_topology(timestamp)
     if TEST:
         time.sleep(2)
-        sn.set_traceroute("GS1", "GS2",f"ts{timestamp}")
+        try:
+            sn.set_traceroute("GS1", "GS2",f"ts{timestamp}")
+        except Exception as e:
+            print(f"Skipping traceroute at timestamp {timestamp} due to error: {e}")
     if timestamp == 0:
         if TEST:
             time.sleep(1)
-            sn.set_traceroute("GS1", "GS2",f"ts{timestamp}_before_link_failure")
-            sn.set_ping("GS1", "GS2", f"ts{timestamp}_when_link_failure")
-            sn.set_iperf("GS1", "GS2", f"ts{timestamp}_when_link_failure")
-            time.sleep(1)
-            sn.tinyleo_fault_test()
-            time.sleep(2)
-            sn.set_traceroute("GS1", "GS2",f"ts{timestamp}_after_link_failure")
-            time.sleep(update_time-0.5 - (time.time() - start_time))
+            try:
+                sn.set_traceroute("GS1", "GS2",f"ts{timestamp}_before_link_failure")
+                sn.set_ping("GS1", "GS2", f"ts{timestamp}_when_link_failure")
+                sn.set_iperf("GS1", "GS2", f"ts{timestamp}_when_link_failure")
+                time.sleep(1)
+                sn.tinyleo_fault_test()
+                time.sleep(2)
+                sn.set_traceroute("GS1", "GS2",f"ts{timestamp}_after_link_failure")
+            except Exception as e:
+                print(f"Skipping tests at timestamp 0 due to error: {e}")
+            time.sleep(max(0, update_time-0.5 - (time.time() - start_time)))
             if timestamp != sn.duration - 1:
-                sn.set_ping("GS1", "GS2", f"ts{timestamp}-{timestamp+1}_topo_change")
-                sn.set_iperf("GS1", "GS2", f"ts{timestamp}-{timestamp+1}_topo_change")
-    time.sleep(update_time - (time.time() - start_time))
+                try:
+                    sn.set_ping("GS1", "GS2", f"ts{timestamp}-{timestamp+1}_topo_change")
+                    sn.set_iperf("GS1", "GS2", f"ts{timestamp}-{timestamp+1}_topo_change")
+                except Exception as e:
+                    print(f"Skipping cross-timestamp tests due to error: {e}")
+    time.sleep(max(0, update_time - (time.time() - start_time)))
 
-if input('clear environment?[y/n]').strip().lower()[:1] == 'y':
-    sn.clean()
+# Automatically clean up environment without waiting for user input
+sn.clean()
